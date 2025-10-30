@@ -1,0 +1,165 @@
+# RAG Agent Configuration File
+
+# LLM Provider Settings
+llm:
+  provider: "openai"  # Options: "openai", "anthropic"
+  model: "gpt-4"  # Model name
+  api_key: "${OPENAI_API_KEY}"  # Use environment variable
+  temperature: 0.7
+  max_tokens: 2000
+
+# Vector Store Settings
+vector_store:
+  embedding_model: "all-MiniLM-L6-v2"
+  dimension: 384
+  index_type: "flat"  # Options: "flat", "ivf", "hnsw"
+  similarity_metric: "cosine"  # Options: "cosine", "euclidean", "dot_product"
+
+# Document Processing Settings
+document_processing:
+  chunk_size: 1000  # Number of tokens per chunk
+  chunk_overlap: 200  # Overlap between chunks
+  supported_formats:
+    - ".pdf"
+    - ".docx"
+    - ".txt"
+    - ".md"
+    - ".json"
+    - ".yaml"
+    - ".py"
+    - ".js"
+
+# Agent Settings
+agent:
+  memory:
+    context_window: 10  # Number of messages to keep in context
+    enable_long_term: true
+    compression_threshold: 50  # Compress after this many messages
+  
+  tools:
+    enabled:
+      - "web_search"
+      - "calculator"
+      - "code_executor"
+    
+    web_search:
+      api: "serpapi"  # Options: "serpapi", "brave", "google"
+      max_results: 5
+    
+    code_executor:
+      timeout: 30  # Seconds
+      sandbox: true
+      allowed_libraries:
+        - "numpy"
+        - "pandas"
+        - "matplotlib"
+        - "requests"
+
+# RAG Settings
+rag:
+  retrieval:
+    top_k: 5  # Number of chunks to retrieve
+    score_threshold: 0.7  # Minimum similarity score
+    rerank: true  # Whether to rerank results
+    rerank_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  
+  generation:
+    include_sources: true
+    citation_style: "numbered"  # Options: "numbered", "inline", "footnote"
+    answer_style: "comprehensive"  # Options: "brief", "comprehensive", "technical"
+
+# System Prompts for Different Agent Types
+prompts:
+  research:
+    system: |
+      You are a research assistant with expertise in finding and synthesizing information.
+      Your responses should be:
+      - Well-researched and evidence-based
+      - Properly cited with sources
+      - Objective and balanced
+      - Clear and well-structured
+      
+      When using retrieved context, always indicate which sources support your statements.
+  
+  coding:
+    system: |
+      You are an expert coding assistant specializing in software development.
+      Your responses should be:
+      - Technically accurate with working code examples
+      - Include explanations of the code
+      - Follow best practices and design patterns
+      - Consider edge cases and error handling
+      
+      When providing code, ensure it is properly formatted and commented.
+  
+  qa:
+    system: |
+      You are a Q&A assistant that provides accurate answers based on available documents.
+      Your responses should be:
+      - Directly answer the question asked
+      - Base answers solely on provided context
+      - Indicate when information is not available
+      - Be concise yet complete
+  
+  creative:
+    system: |
+      You are a creative writing assistant that helps with various writing tasks.
+      Your responses should be:
+      - Creative and engaging
+      - Adapt to the requested style and tone
+      - Provide original content
+      - Offer suggestions and alternatives
+
+# Logging Settings
+logging:
+  level: "INFO"  # Options: "DEBUG", "INFO", "WARNING", "ERROR"
+  file: "rag_agent.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  rotate: true
+  max_size: "10MB"
+  backup_count: 5
+
+# Performance Settings
+performance:
+  cache:
+    enabled: true
+    ttl: 3600  # Cache TTL in seconds
+    max_size: 1000  # Maximum cache entries
+  
+  batch_processing:
+    enabled: true
+    batch_size: 10
+  
+  async:
+    enabled: true
+    max_workers: 4
+
+# Security Settings
+security:
+  api_keys:
+    encryption: true
+    storage: "environment"  # Options: "environment", "file", "vault"
+  
+  input_validation:
+    max_length: 10000
+    sanitize_html: true
+    block_patterns:
+      - "(?i)password"
+      - "(?i)secret"
+      - "(?i)api[_-]?key"
+  
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+    requests_per_hour: 1000
+
+# Storage Settings
+storage:
+  base_path: "./rag_data"
+  vector_store_path: "./rag_data/vectors"
+  document_store_path: "./rag_data/documents"
+  memory_store_path: "./rag_data/memory"
+  backup:
+    enabled: true
+    frequency: "daily"  # Options: "hourly", "daily", "weekly"
+    retention_days: 30

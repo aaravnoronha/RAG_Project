@@ -1,0 +1,90 @@
+# RAG Agent System Requirements
+
+# Core Dependencies
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+
+# LLM Providers
+openai>=1.0.0
+anthropic>=0.25.0
+tiktoken>=0.5.0
+
+# Vector Store & Embeddings
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.4  # Use faiss-gpu for GPU support
+chromadb>=0.4.0  # Alternative vector store
+pinecone-client>=2.2.0  # Cloud vector store option
+
+# Document Processing
+pypdf>=3.17.0
+python-docx>=1.0.0
+markdown>=3.5.0
+beautifulsoup4>=4.12.0
+python-pptx>=0.6.21
+openpyxl>=3.1.0
+pytesseract>=0.3.10  # For OCR
+
+# Web Tools
+aiohttp>=3.9.0
+requests>=2.31.0
+selenium>=4.15.0  # For dynamic web content
+serpapi>=2.4.0  # Search API
+
+# Data Processing
+pyyaml>=6.0
+jsonschema>=4.20.0
+python-dotenv>=1.0.0
+
+# Async & Parallel Processing
+asyncio>=3.4.3
+aiofiles>=23.2.0
+concurrent-futures>=3.1.1
+
+# Graph & Visualization
+networkx>=3.0
+matplotlib>=3.7.0
+plotly>=5.18.0
+graphviz>=0.20.0
+
+# NLP & Analysis
+spacy>=3.7.0
+nltk>=3.8.0
+textblob>=0.17.0
+transformers>=4.35.0  # For advanced NLP models
+
+# Reranking
+rank-bm25>=0.2.2
+cross-encoder>=0.1.0
+
+# Database (optional)
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0  # PostgreSQL
+pymongo>=4.6.0  # MongoDB
+redis>=5.0.0  # Redis for caching
+
+# Monitoring & Logging
+loguru>=0.7.0
+prometheus-client>=0.19.0
+sentry-sdk>=1.39.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-mock>=3.12.0
+coverage>=7.3.0
+
+# Development Tools
+black>=23.12.0
+flake8>=6.1.0
+mypy>=1.7.0
+pre-commit>=3.5.0
+
+# Optional Advanced Features
+# Uncomment if needed:
+
+# langchain>=0.1.0  # For additional chain patterns
+# llama-index>=0.9.0  # For advanced indexing
+# guidance>=0.1.0  # For structured generation
+# autogen>=0.2.0  # For autonomous agents
+# semantic-kernel>=0.4.0  # Microsoft's orchestration framework
