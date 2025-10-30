@@ -24,7 +24,7 @@ A comprehensive framework for building Retrieval-Augmented Generation (RAG) agen
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/aaravnoronha/RAG_Project.git
 cd rag-agent-system
 ```
 
