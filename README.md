@@ -290,18 +290,6 @@ The system includes built-in logging and monitoring:
 - Prometheus metrics export
 - Detailed activity logs
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
-
-## 📝 License
-
-MIT License - see LICENSE file for details
-
 ## 🆘 Troubleshooting
 
 ### Common Issues
@@ -329,13 +317,7 @@ MIT License - see LICENSE file for details
        nprobe=10
    )
    ```
-
-## 📞 Support
-
-- Documentation: See `/docs` folder
-- Issues: GitHub Issues
-- Discussions: GitHub Discussions
-
+   
 ## 🎯 Roadmap
 
 - [ ] Graph-based knowledge representation
